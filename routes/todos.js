@@ -4,5 +4,5 @@ const router = Router();
 
 /* GET todos index(get localhost:3000/todos). */
 router.get("/",todosCtrl.index );
-router.get("/new",todosCtrl.new)
+
 export { router };

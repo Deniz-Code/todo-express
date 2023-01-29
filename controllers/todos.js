@@ -19,6 +19,18 @@ function index(req, res) {
 
 function newTodo(req, res) {
   //render a view with a form
-  res.render("todos/new")
+  res.render("todos/new");
 }
-export { index, newTodo as new };
+
+function create(req, res) {
+  req.body.done = false;
+  Todo.create(req.body)
+    .then((todo) => {
+      res.redirect("/todos");
+    })
+    .catch((error) => {
+      console.log(error);
+      res.redirect("/");
+    });
+}
+export { index, newTodo as new, create };

@@ -1,14 +1,14 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
-const Schema=mongoose.Schema
-
+//making it a shortcut
+const Schema = mongoose.Schema;
+//creating the schema
 const todoSchema = new Schema({
-  text:String,
-  done:Boolean,
-})
+  text: String,
+  done: Boolean,
+});
 
-const Todo=mongoose.model("Todo",todoSchema)
+//compiling the schema
+const Todo = mongoose.model("Todo", todoSchema);
 
-export{
-  Todo
-}
+export { Todo };

@@ -13,7 +13,7 @@ function index(req, res) {
     //handle errors
     .catch((error) => {
       console.log(error);
-      res.redirect("/");
+      res.redirect("/todos");
     });
 }
 
@@ -30,7 +30,21 @@ function create(req, res) {
     })
     .catch((error) => {
       console.log(error);
-      res.redirect("/");
+      res.redirect("/todos");
     });
 }
-export { index, newTodo as new, create };
+
+function show(req, res) {
+  console.log(req.params);
+  //.id comes from the route(we set it)
+  Todo.findById(req.params.id).then((todo) => {
+    res.render("todos/show", {
+      todo: todo,
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+    res.redirect("/todos");
+  });
+}
+export { index, newTodo as new, create, show };

@@ -8,9 +8,10 @@
   </head>
   <body>
     <h1>Todos</h1>
+    <a href="/">Go back</a>
     <ul>
       <% todos.forEach(todo => { %>
-      <li><%= todo.text %> - <%= todo.done ? "done": "not done" %></li>
+      <li><a href="/todos/<%= todo._id %>"><%= todo.text %></a> - <%= todo.done ? "done": "not done" %></li>
       <% }) %>
     </ul>
     <a href="/todos/new">Add a to-do</a>

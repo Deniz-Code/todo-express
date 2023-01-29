@@ -6,6 +6,10 @@ const router = Router();
 router.get("/", todosCtrl.index);
 //GET /todos/new
 router.get("/new", todosCtrl.new);
+//GET /todos/:id
+//ALWAYS SHOW AFTER NEW because /:id can be anything so it turns the /new to a id
+//the more /:id the more down you need to put them 
+router.get("/:id",todosCtrl.show)
 //POST /todos
 router.post("/", todosCtrl.create);
 export { router };

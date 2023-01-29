@@ -33,7 +33,7 @@ app.use(
 );
 //mounted routers
 app.use("/", indexRouter);
-//will send you to users.js and looks there
+//will send you to routes todos.js and looks there
 app.use("/todos", todosRouter);
 
 // catch 404 and forward to error handler

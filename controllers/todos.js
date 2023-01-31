@@ -52,14 +52,29 @@ function show(req, res) {
 
 function deleteTodo(req, res) {
   //delete the todo item after finding by its id
-  Todo.findByIdAndDelete(req.params.id).then((todo) => {
-    res.redirect("/todos")
-  })//redirect the user to the index view
-  .catch((error) => {
-    console.log(error)
-    res.redirect("/todos")
-  })
-
-  
+  Todo.findByIdAndDelete(req.params.id)
+    .then((todo) => {
+      res.redirect("/todos")
+    }) //redirect the user to the index view
+    .catch((error) => {
+      console.log(error)
+      res.redirect("/todos")
+    })
 }
-export { index, newTodo as new, create, show, deleteTodo as delete }
+
+function edit(req, res) {
+  //find the todo by id
+  //render a view , passing in our todo
+  Todo.findById(req.params.id)
+    .then((todo) => {
+      res.render("todos/edit", {
+        todo: todo,
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+      res.redirect("/todos")
+    })
+}
+
+export { index, newTodo as new, create, show, deleteTodo as delete, edit }

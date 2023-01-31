@@ -10,6 +10,9 @@ router.get("/new", todosCtrl.new);
 //ALWAYS SHOW AFTER NEW because /:id can be anything so it turns the /new to a id
 //the more /:id the more down you need to put them 
 router.get("/:id",todosCtrl.show)
+
+//GET /todos/:id/edit
+router.get("/:id/edit",todosCtrl.edit)
 //POST /todos
 router.post("/", todosCtrl.create);
 

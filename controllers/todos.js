@@ -77,4 +77,20 @@ function edit(req, res) {
     })
 }
 
-export { index, newTodo as new, create, show, deleteTodo as delete, edit }
+function update(req,res){
+  //handle checkbox logic
+  req.body.done=!!req.body.done
+  console.log(req.body);
+  //find the todo by id and update/ //this has 3 parameters 1 what you wanna update 2 what you want to update it with 3
+  Todo.findByIdAndUpdate(req.params.id,req.body,{new:true})
+  .then(todo=>{//redirect back to show view 
+res.redirect(`/todos/${todo._id}`)
+  })
+  .catch((error) => {
+    console.log(error)
+    res.redirect("/todos")
+  })
+
+}
+
+export { index, newTodo as new, create, show, deleteTodo as delete, edit ,update}

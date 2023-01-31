@@ -12,4 +12,7 @@ router.get("/new", todosCtrl.new);
 router.get("/:id",todosCtrl.show)
 //POST /todos
 router.post("/", todosCtrl.create);
+
+//delete/todos/:id
+router.delete("/:id",todosCtrl.delete)
 export { router };

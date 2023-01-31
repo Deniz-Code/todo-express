@@ -4,14 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheets/style.css">
     <title>Express to-do</title>
   </head>
   <body>
+    <h1>Todos as of <%= time %></h1>
     <h1>Todos</h1>
     <a href="/">Go back</a>
     <ul>
       <% todos.forEach(todo => { %>
-      <li><a href="/todos/<%= todo._id %>"><%= todo.text %></a> - <%= todo.done ? "done": "not done" %></li>
+      <li>
+        <form
+          action="/todos/<%= todo._id %>?_method=DELETE"
+          class="delete-form"
+          method="POST"
+        >
+          <button type="submit">X</button>
+        </form>
+        <a href="/todos/<%= todo._id %>"><%= todo.text %></a> - <%= todo.done ?
+        "done": "not done" %>
+      </li>
       <% }) %>
     </ul>
     <a href="/todos/new">Add a to-do</a>
